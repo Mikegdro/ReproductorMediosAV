@@ -2,10 +2,8 @@
 package Clases;
 
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.NavigableSet;
+import java.util.TreeSet;
 
 /**
  * ListaMedios es una clase que implementará una serie de listas que guardarán
@@ -15,10 +13,10 @@ import java.util.Set;
  * 
  */
 public class ListaMedios implements Serializable {
-    private Set<Medio> conjunto;
+    private TreeSet<Medio> conjunto;
     
     public ListaMedios(){
-        conjunto = new HashSet<>();
+        conjunto = new TreeSet<>();
     }
     
     public boolean añadirMedio(Medio medio){
@@ -30,6 +28,20 @@ public class ListaMedios implements Serializable {
     }
 
     public void ordenarAlReves(){
-        
+        NavigableSet nuevo = conjunto.descendingSet();
+        conjunto.clear();
+        conjunto.addAll(nuevo);
+    }
+    
+    public void ordenarDuracion(){
+        TreeSet<Medio> copia = new TreeSet(new ComparatorDuracion());
+        copia.addAll(conjunto);
+        conjunto = copia;
+    }
+    
+    public void ordenarAlfabetico(){
+        TreeSet<Medio> copia = new TreeSet(new ComparatorAlfabetico());
+        copia.addAll(conjunto);
+        conjunto = copia;
     }
 }

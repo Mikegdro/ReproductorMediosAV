@@ -1,6 +1,8 @@
 
 package Clases;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 
 /**
@@ -16,6 +18,8 @@ public abstract class Medio implements Comparable {
     private String ruta;
     //Double con la duración en MINUTOS
     private double duracion;
+    //Fecha Modificacion
+    private Calendar reciente;
     
     public Medio(String nombre, String ruta, double duracion){
         if(nombre.isBlank()){
@@ -31,6 +35,7 @@ public abstract class Medio implements Comparable {
         this.nombre = nombre;
         this.ruta = ruta;
         this.duracion = duracion;
+        reciente = new GregorianCalendar();
     }
 
     public String getNombre() {
@@ -56,10 +61,25 @@ public abstract class Medio implements Comparable {
     public void setDuracion(double duracion) {
         this.duracion = duracion;
     }
+    
+    public Calendar getReciente(){
+        return reciente;
+    }
+    
+    public void actualizarFecha(){
+        this.reciente= new GregorianCalendar();
+    }
 
+    /**
+     * CompareTo que usa los compareTo respectivos de la clase calendar, 
+     * estableciendo así el orden de ordenación natural en la fecha de creación/
+     * modificación.
+     * @param o
+     * @return 
+     */
     @Override
     public int compareTo(Object o) {
-        return this.nombre.compareTo(((Medio)o).getNombre());
+        return this.reciente.compareTo(((Medio)o).getReciente());
     }
 
     @Override
