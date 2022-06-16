@@ -28,8 +28,8 @@ public class ListaMedios implements Serializable {
     }
 
     public void ordenarAlReves(){
-        NavigableSet nuevo = conjunto.descendingSet();
-        conjunto = new TreeSet<>(nuevo);
+        NavigableSet copiaInvertida = conjunto.descendingSet();
+        conjunto = new TreeSet<>(copiaInvertida);
     }
     
     public void ordenarDuracion(){
