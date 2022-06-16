@@ -23,25 +23,24 @@ public class ListaMedios implements Serializable {
         return conjunto.add(medio);
     }
     
-    public boolean eleminarMedio(Medio medio){
+    public boolean eliminarMedio(Medio medio){
         return conjunto.remove(medio);
     }
 
     public void ordenarAlReves(){
         NavigableSet nuevo = conjunto.descendingSet();
-        conjunto.clear();
-        conjunto.addAll(nuevo);
+        conjunto = new TreeSet<>(nuevo);
     }
     
     public void ordenarDuracion(){
         TreeSet<Medio> copia = new TreeSet(new ComparatorDuracion());
         copia.addAll(conjunto);
-        conjunto = copia;
+        conjunto = new TreeSet<>(copia);
     }
     
     public void ordenarAlfabetico(){
         TreeSet<Medio> copia = new TreeSet(new ComparatorAlfabetico());
         copia.addAll(conjunto);
-        conjunto = copia;
+        conjunto = new TreeSet<>(copia);
     }
 }
