@@ -1,6 +1,7 @@
 package Clases;
 
 import Clases.Formatos.FormatosVideo;
+import java.io.File;
 
 /**
  * Sub-clase de Medio, llama a super() creando un objeto medio, y comprueba
@@ -18,14 +19,14 @@ public class Video extends Medio {
 
     private String formato;
 
-    public Video(String nombre, String ruta, double duracion, String formato) {
-        super(nombre, ruta, duracion);
+    public Video(File archivo, String formato) {
+        super(archivo);
         FormatosVideo [] formatos = FormatosVideo.values();
         
         boolean permitido = false;
         
         for(FormatosVideo c: formatos){
-            if(c.toString().equals(formato)){
+            if(c.toString().equalsIgnoreCase(formato)){
                permitido = true; 
             }
         }

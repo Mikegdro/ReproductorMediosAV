@@ -5,12 +5,14 @@
  */
 package Main;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.stage.FileChooser;
 
 /**
  *
@@ -18,17 +20,22 @@ import javafx.scene.control.Label;
  */
 public class FXMLDocumentController implements Initializable {
     
-    @FXML
-    private Label label;
+    boolean haPulsadoAdd;
     
     @FXML
     private void botonAdd(ActionEvent event) {
-        System.out.println("You clicked me!");
-        
+        FileChooser selector = new FileChooser();
+        File archivo = selector.showOpenDialog(null);
+        if(archivo != null){
+            Reproductor.recientes.añadirMedio(archivo);
+        }else{
+            System.out.println("No ha proporcionado un archivo correcto");
+        }
     }
     
     @FXML
     private void botonEliminar(ActionEvent event){
+        System.out.println(Reproductor.recientes.toString());
         
     }
     

@@ -2,6 +2,7 @@
 package Clases;
 
 import Clases.Formatos.FormatosCancion;
+import java.io.File;
 
 /**
  * Sub-clase de Medio, llama a super() creando un objeto medio, y comprueba
@@ -21,8 +22,8 @@ public class Cancion extends Medio {
     
     private String formato;
     
-    public Cancion(String nombre, String ruta, double duracion, String formato){
-        super(nombre, ruta, duracion);
+    public Cancion(File archivo, String formato){
+        super(archivo);
         FormatosCancion [] formatos = FormatosCancion.values();
         
         boolean permitido = false;
