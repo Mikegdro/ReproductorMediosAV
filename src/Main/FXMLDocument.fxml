@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.FXMLDocumentController">
+   <children>
+      <SplitPane VBox.vgrow="ALWAYS">
+         <items>
+            <SplitPane dividerPositions="0.25">
+              <items>
+                <AnchorPane>
+                     <children>
+                        <Button layoutX="41.0" layoutY="56.0" mnemonicParsing="false" onAction="#botonAdd" prefHeight="31.0" prefWidth="73.0" text="Añadir" />
+                        <Button layoutX="41.0" layoutY="127.0" mnemonicParsing="false" onAction="#botonEliminar" prefHeight="31.0" prefWidth="73.0" text="Eliminar" />
+                        <Button layoutX="41.0" layoutY="199.0" mnemonicParsing="false" onAction="#botonEliminar" prefHeight="31.0" prefWidth="73.0" text="Listas" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+              </items>
+            </SplitPane>
+         </items>
+      </SplitPane>
+   </children>
+</VBox>

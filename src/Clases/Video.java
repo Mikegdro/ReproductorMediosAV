@@ -1,5 +1,7 @@
 package Clases;
 
+import Clases.Formatos.FormatosVideo;
+
 /**
  * Sub-clase de Medio, llama a super() creando un objeto medio, y comprueba
  * el formato pasado por parámetro, en caso de ser soportado por el programa,
@@ -15,15 +17,14 @@ package Clases;
 public class Video extends Medio {
 
     private String formato;
-    private enum Formatos{MP4, FLV};
 
     public Video(String nombre, String ruta, double duracion, String formato) {
         super(nombre, ruta, duracion);
-        Formatos [] formatos = Formatos.values();
+        FormatosVideo [] formatos = FormatosVideo.values();
         
         boolean permitido = false;
         
-        for(Formatos c: formatos){
+        for(FormatosVideo c: formatos){
             if(c.toString().equals(formato)){
                permitido = true; 
             }
