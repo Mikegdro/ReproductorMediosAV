@@ -5,7 +5,6 @@ import java.net.MalformedURLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Objects;
-import javafx.concurrent.Task;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
@@ -24,6 +23,9 @@ public abstract class Medio implements Comparable {
     private double duracion;
     //Fecha Modificacion
     private Calendar reciente;
+    
+    private String nombre;
+    private String ruta;
 
     public Medio(File archivo) {
         if (!archivo.exists()) {
@@ -32,6 +34,8 @@ public abstract class Medio implements Comparable {
 
         this.archivo = archivo;
         reciente = new GregorianCalendar();
+        nombre = archivo.getName();
+        ruta = archivo.getAbsolutePath();
     }
 
     public String getNombre() {
@@ -51,14 +55,14 @@ public abstract class Medio implements Comparable {
             Media media = new Media(getRuta());
             MediaPlayer player = new MediaPlayer(media);
             player.setOnReady(() -> {
-                System.out.println("holi");
                 setDuracion(player.getTotalDuration().toSeconds());
+                System.out.println("Añadido");
             });
             new Thread(new Runnable(){
                 @Override
                 public void run(){
                     while(player.getStatus() == Status.UNKNOWN){
-                        System.out.println(player.getStatus());
+                        System.out.println("Cargando");
                     }
                 }
             }).start();
@@ -71,6 +75,10 @@ public abstract class Medio implements Comparable {
     public void setDuracion(double duracion){
         this.duracion = duracion;
 
+    }
+    
+    public void setNombre(String nombre){
+        this.nombre = nombre;
     }
 
     public Calendar getReciente() {
@@ -128,6 +136,5 @@ public abstract class Medio implements Comparable {
     public String toString() {
         return "Medio{" + "archivo=" + archivo.getName() + ", duracion=" + duracion + ", reciente=" + reciente + '}';
     }
-    
     
 }

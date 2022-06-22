@@ -28,16 +28,21 @@ public class ListaMedios implements Serializable {
         boolean añadido = false;
 
         Map<Integer, String> tipoMedio = FuncionesMedio.tipoMedio(archivo);
-
+      
         if (tipoMedio.containsKey(1)) {
             aAñadir = new Video(archivo, tipoMedio.get(1));
-            aAñadir.calcularDuracion();
+            //aAñadir.calcularDuracion();
             añadido = conjunto.add(aAñadir);
         } else if (tipoMedio.containsKey(2)) {
-            aAñadir = new Video(archivo, tipoMedio.get(1));
+            aAñadir = new Cancion(archivo, tipoMedio.get(1));
+            //aAñadir.calcularDuracion();
             añadido = conjunto.add(aAñadir);
+        }else{
+            throw new IllegalArgumentException("El tipo de archivo no es válido");
         }
 
+        
+        
         return añadido;
     }
 
@@ -67,5 +72,7 @@ public class ListaMedios implements Serializable {
         return "ListaMedios{" + "conjunto=" + conjunto + '}';
     }
     
-    
+    public Medio getLast(){
+        return conjunto.last();
+    }
 }
